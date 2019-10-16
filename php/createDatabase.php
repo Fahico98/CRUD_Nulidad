@@ -12,7 +12,7 @@ function createDatabase(){
             id                      INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             usuario                 VARCHAR(75) NOT NULL UNIQUE,
             contraseña              VARCHAR(255) NOT NULL,
-            nombre                  VARCHAR(75) NOT NULL UNIQUE,
+            nombre                  VARCHAR(75) NOT NULL,
             sala                    VARCHAR(75) NOT NULL
          )";
       $pdo->query($query);
