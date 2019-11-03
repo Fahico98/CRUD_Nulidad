@@ -11,8 +11,7 @@ $(document).ready(function(){
       event.preventDefault();
       if(loginFormValidation()){
          var loginData = new FormData(this);
-         // Agregar if...
-         loginData.append("tableName", "autoridades");
+         loginData.append("tableName", "usuarios");
          $.ajax({
             type: "POST",
             url: "php/login.php",
@@ -27,8 +26,9 @@ $(document).ready(function(){
                   advice.text("*** El nombre de usuario o la contraseña son incorrectos ***");
                }else{
                   adviceContainer.attr("hidden", true);
-                  advice.text("***");
-                  console.log("Login success...!");
+                  advice.text("");
+                  mainContainer.html(response.content);
+                  $("body").append("<script src='js/crudUsuariosScript.js'></script>");
                }
             }
          });

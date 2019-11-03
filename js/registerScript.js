@@ -14,6 +14,7 @@ var registerPasswordHelp = $("#registerPasswordHelp");
 var registerPasswordConfHelp = $("#registerPasswordConfHelp");
 
 var closeRegister = $(".closeRegister");
+var successRegisterButton = $("#successRegisterButton");
 
 var inputs = [
    registerName,
@@ -34,9 +35,7 @@ var helpers = [
 $(document).ready(function(){
    registerForm.on("submit", function(event){
       event.preventDefault();
-      console.log("submit...!");
       if(validateRegisterForm()){
-         console.log("-> " + validateRegisterForm());
          var registerFormData = new FormData(this);
          $.ajax({
             type: "POST",
@@ -46,11 +45,12 @@ $(document).ready(function(){
             cache: false,
             processData: false,
             success: function(response){
-               console.log(response);
+               if($.trim(response) == "success"){
+                  closeRegister.trigger("click");
+                  successRegisterButton.trigger("click");
+               }
             }
          });
-      }else{
-         console.log("...!");
       }
    });
    closeRegister.on("click", function(event){
@@ -94,7 +94,7 @@ function validateRegisterForm(){
       registerNameHelp.removeClass("text-muted").addClass("text-danger");
       registerNameHelp.text("(*) Este campo es obligatorio.");
       output = false;
-   }else if(!name.match(new RegExp("[A-Za-z]", "i"))){
+   }else if(!name.match(new RegExp("[A-Za-z ]", "i"))){
       registerNameHelp.removeClass("text-muted").addClass("text-danger");
       registerNameHelp.text("(*) Este campo solo debe contener caracteres alfabéticos.");
       output = false;
@@ -107,7 +107,7 @@ function validateRegisterForm(){
       registerSalaHelp.removeClass("text-muted").addClass("text-danger");
       registerSalaHelp.text("(*) Este campo es obligatorio.");
       output = false;
-   }else if(!sala.match(new RegExp("[A-Za-z0-9]", "i"))){
+   }else if(!sala.match(new RegExp("[A-Za-z0-9 ]", "i"))){
       registerSalaHelp.removeClass("text-muted").addClass("text-danger");
       registerSalaHelp.text("(*) Este campo solo debe contener caracteres alfanuméricos.");
       output = false;

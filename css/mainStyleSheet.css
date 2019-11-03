@@ -2,3 +2,7 @@
 #loginCard{
    width: 40%;
 }
+
+.searchOption, .editIcon, .deleteIcon{
+   cursor: pointer;
+}

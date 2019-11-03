@@ -27,9 +27,9 @@
          $_SESSION["userName"] = $userName;
          $_SESSION["userRole"] = $tableName;
          if($tableName === "usuarios"){
-            echo "...!";
+            $output = array("content" => file_get_contents("../html/crudUsuarios.html" ));
          }else{
-            $output = array("content" => file_get_contents("../html/crud.html"));
+            $output = array("content" => file_get_contents("../html/crudAutoridades.html"));
          }
       }else{
          $output = array("content" => "login_failed");
