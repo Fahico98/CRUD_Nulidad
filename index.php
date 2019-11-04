@@ -1,7 +1,13 @@
 
 <?php
-include("php/createDatabase.php");
-createDatabase();
+
+   include("php/createDatabase.php");
+   createDatabase();
+   session_start();
+   if(isset($_SESSION["userName"]) && isset($_SESSION["userRole"])){
+      header("Location:php/loginRedirect.php");
+   }
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +25,7 @@ createDatabase();
    <body>
       <div class="container my-5">
          <div class="row d-flex justify-content-center my-5">
-            <h2 class="mt-5 mb-3 text-wine">Sistema de Registro de Sentencias de Nulidad</h2>
+            <h2 id="mainTittle" class="mt-5 mb-3 text-wine">Sistema de Registro de Sentencias de Nulidad</h2>
          </div>
 
          <div id="mainContainer" class="row d-flex justify-content-center mt-5">
@@ -112,11 +118,10 @@ createDatabase();
                </div>
             </div>
 
-         
             <div class="card" id="loginCard">
                <h5 class="card-header bg-wine text-my-orange">Iniciar Sesión</h5>
                <div class="card-body">
-                  <form id="loginForm" method="POST" action="#">
+                  <form id="loginForm" method="POST" action="php/loginRedirect.php">
                      <div class="row form-group mx-1">
                         <label class="text-wine" for="userName">Nombre de usuario</label>
                         <input type="text" class="form-control form-control-wine" id="userName" name="userName" placeholder="usuario">
@@ -125,6 +130,7 @@ createDatabase();
                         <label class="text-wine" for="password">Contraseña</label>
                         <input type="password" class="form-control form-control-wine" id="password" name="password" placeholder="contraseña">
                      </div>
+
                      <!--
                      <div class="row form-group mx-1">
                         <div class="custom-control custom-checkbox mt-1">
@@ -133,21 +139,27 @@ createDatabase();
                         </div>
                      </div>
                      -->
+
+                     <!--
                      <div class="row form-group mx-1">
                         <p class="text-wine text-md my-0">Si no tiene una cuenta puede <a class="text-my-orange" href="#" data-toggle="modal"
                            data-target="#modalRegForm">registrarse</a> o puede ingresar como autoridad en modo 
                            <a class="text-my-orange" href="#">solo lectura</a>.
                         </p>
                      </div>
+                     -->
+
                      <div class="row form-group mx-1 my-0">
                         <button type="submit" class="btn btn-wine text-my-orange font-weight-semi-bold">Enviar</button>
                         <button type="button" id="successRegisterButton" data-toggle="modal" data-target="#modalRegSuccess" hidden>
                            exito
                         </button>
                      </div>
+
                      <div id="adviceContainer" class="row form-group mx-1 mt-3 mb-0" hidden>
                         <small class="text-danger" id="advice">...</small>
                      </div>
+
                   </form>
                </div>
             </div>
@@ -157,6 +169,5 @@ createDatabase();
       <script src="bootstrap_4.3.1/js/popper.js"></script>
       <script src="bootstrap_4.3.1/js/bootstrap.js"></script>
       <script src="js/loginScript.js"></script>
-      <script src="js/registerScript.js"></script>
    </body>
 </html>

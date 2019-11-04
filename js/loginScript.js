@@ -7,8 +7,8 @@ var loginForm = $("#loginForm");
 var mainContainer = $("#mainContainer");
 
 $(document).ready(function(){
-   loginForm.on("submit", function(event){
-      event.preventDefault();
+   loginForm.on("submit", function(){
+      var output = false;
       if(loginFormValidation()){
          var loginData = new FormData(this);
          loginData.append("tableName", "usuarios");
@@ -18,21 +18,19 @@ $(document).ready(function(){
             data: loginData,
             dataType: "JSON",
             contentType: false,
-            cache: false,
             processData: false,
-            success: function(response){
+            success: function(response = null){
                if(response.content === "login_failed"){
                   adviceContainer.attr("hidden", false);
                   advice.text("*** El nombre de usuario o la contraseña son incorrectos ***");
-               }else{
-                  adviceContainer.attr("hidden", true);
-                  advice.text("");
-                  mainContainer.html(response.content);
-                  $("body").append("<script src='js/crudUsuariosScript.js'></script>");
+               }else if(response.content === "login_success"){
+                  output = true;
                }
-            }
+            },
+            async: false
          });
       }
+      return output;
    });
 });
 
@@ -48,4 +46,27 @@ function loginFormValidation(){
       advice.text("***");
       return true;
    }
+}
+
+function getSession(){
+   $.ajax({
+      type: "POST",
+      url: "php/getSession.php",
+      data: loginData,
+      dataType: "JSON",
+      contentType: false,
+      processData: false,
+      success: function(response){
+         console.log(">>>");
+         if(response.content === "login_failed"){
+            adviceContainer.attr("hidden", false);
+            advice.text("*** El nombre de usuario o la contraseña son incorrectos ***");
+         }else{
+            adviceContainer.attr("hidden", true);
+            advice.text("");
+            mainContainer.html(response.content);
+            $("body").append("<script src='js/crudUsuariosScript.js'></script>");
+         }
+      }
+   });
 }
