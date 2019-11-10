@@ -19,7 +19,7 @@ $(document).ready(function(){
             dataType: "JSON",
             contentType: false,
             processData: false,
-            success: function(response = null){
+            success: function(response){
                if(response.content === "login_failed"){
                   adviceContainer.attr("hidden", false);
                   advice.text("*** El nombre de usuario o la contraseña son incorrectos ***");
@@ -48,6 +48,7 @@ function loginFormValidation(){
    }
 }
 
+/*
 function getSession(){
    $.ajax({
       type: "POST",
@@ -57,7 +58,6 @@ function getSession(){
       contentType: false,
       processData: false,
       success: function(response){
-         console.log(">>>");
          if(response.content === "login_failed"){
             adviceContainer.attr("hidden", false);
             advice.text("*** El nombre de usuario o la contraseña son incorrectos ***");
@@ -70,3 +70,4 @@ function getSession(){
       }
    });
 }
+*/

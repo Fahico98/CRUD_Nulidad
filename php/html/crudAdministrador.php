@@ -34,12 +34,12 @@
          <div id="mainContainer" class="row d-flex justify-content-center mt-5">
 
             <!-- Add Sentence Modal Window -->
-            <div class="modal fade border-dark" id="addSentenceModalWindow" tabindex="-1" role="dialog" aria-labelledby="addSentenceModalWindowTitle"
-               aria-hidden="true">
+            <div class="modal fade border-dark" id="addSentenceModalWindow" aria-labelledby="addSentenceModalWindowTitle" tabindex="-1"
+               role="dialog" aria-hidden="true">
                <div class="modal-dialog" role="document">
                   <div class="modal-content">
                      <div class="modal-header bg-wine">
-                        <h5 class="modal-title text-my-orange" id="modalWindowTitle">Agregar nuevo producto</h5>
+                        <h5 class="modal-title text-my-orange">Agregar nueva sentencia</h5>
                         <button type="button" class="close closeNewSenteceForm" data-dismiss="modal" aria-label="Close">
                            <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,10 +76,125 @@
                            </div>
                         </div>
                         <div class="modal-footer my-0 py-3 pb-0">
-                           <button type="button" class="btn btn-outline-wine text-my-orange font-weight-semi-bold closeNewSenteceForm" data-dismiss="modal">
+                           <button type="button" class="btn btn-outline-wine text-my-orange font-weight-semi-bold" data-dismiss="modal">
                               Cancelar
                            </button>
-                           <button type="submit" class="btn btn-wine text-my-orange font-weight-semi-bold" id="addSentenceSubmitButton">Guardar</button>
+                           <button type="submit" class="btn btn-wine text-my-orange font-weight-semi-bold">
+                              Guardar
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Register User Modal Window -->
+            <div class="modal fade border-dark" id="registerUserModalWindow" aria-labelledby="registerUserModalWindowTitle" tabindex="-2"
+               role="dialog" aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header bg-wine">
+                        <h5 class="modal-title text-my-orange">Registrar usuario</h5>
+                        <button type="button" class="close closeRegisterUserForm" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <form id="registerUserForm" autocomplete="off">
+                        <div class="modal-body">
+                           <div class="form-group input-group-sm">
+                              <label for="ame">Nombre</label>
+                              <input type="text" class="form-control" name="name" id="name" aria-describedby="nameHelp" placeholder="nombre">
+                              <small id="nameHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="room">Sala</label>
+                              <input type="text" class="form-control" name="room" id="room" aria-describedby="roomHelp" placeholder="sala">
+                              <small id="roomHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="userName">Nombre de usuario</label>
+                              <input type="text" class="form-control" name="userName" id="userName" aria-describedby="userNameHelp"
+                                 placeholder="usuario">
+                              <small id="userNameHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="password">Contraseña</label>
+                              <input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHelp"
+                                 placeholder="contraseña">
+                              <small id="passwordHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="confPassword">Confirmación de contraseña</label>
+                              <input type="password" class="form-control" name="confPassword" id="confPassword" aria-describedby="confPasswordHelp"
+                                 placeholder="confirmación">
+                              <small id="confPasswordHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                        </div>
+                        <div class="modal-footer my-0 py-3 pb-0">
+                           <button type="button" class="btn btn-outline-wine text-my-orange font-weight-semi-bold" data-dismiss="modal">
+                              Cancelar
+                           </button>
+                           <button type="submit" class="btn btn-wine text-my-orange font-weight-semi-bold">
+                              Registrar
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Authority Register Modal Window -->
+            <div class="modal fade border-dark" id="registerAuthorityModalWindow" aria-labelledby="registerAuthorityModalWindowTitle"
+               tabindex="-3"
+               role="dialog" aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header bg-wine">
+                        <h5 class="modal-title text-my-orange">Registrar autoridad</h5>
+                        <button type="button" class="close closeAuthorityRegisterForm" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <form id="authorityRegisterForm" autocomplete="off">
+                        <div class="modal-body">
+                           <div class="form-group input-group-sm">
+                              <label for="authorityName">Nombre de la autoridad</label>
+                              <input type="text" class="form-control" name="authorityName" id="authorityName"
+                                 aria-describedby="authorityNameHelp" placeholder="autoridad">
+                              <small id="authorityNameHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="supAuthorityName">Autoridad superior</label>
+                              <input type="text" class="form-control" name="supAuthorityName" id="supAuthorityName"
+                                 aria-describedby="supAuthorityNameHelp" placeholder="autoridad superior">
+                              <small id="supAuthorityNameHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="authorityUserName">Nombre de usuario</label>
+                              <input type="text" class="form-control" name="authorityUserName" id="authorityUserName"
+                                 aria-describedby="authorityUserNameHelp" placeholder="usuario">
+                              <small id="authorityUserNameHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="authorityPass">Contraseña</label>
+                              <input type="password" class="form-control" name="authorityPass" id="authorityPass"
+                                 aria-describedby="authorityPassHelp" placeholder="contraseña">
+                              <small id="authorityPassHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                           <div class="form-group input-group-sm">
+                              <label for="authorityConfPass">Confirmación de contraseña</label>
+                              <input type="password" class="form-control" name="authorityConfPass" id="authorityConfPass"
+                                 aria-describedby="authorityConfPassHelp" placeholder="confirmación">
+                              <small id="authorityConfPassHelp" class="helpText text-danger mb-0 pb-0"></small>
+                           </div>
+                        </div>
+                        <div class="modal-footer my-0 py-3 pb-0">
+                           <button type="button" class="btn btn-outline-wine text-my-orange font-weight-semi-bold" data-dismiss="modal">
+                              Cancelar
+                           </button>
+                           <button type="submit" class="btn btn-wine text-my-orange font-weight-semi-bold">
+                              Registrar
+                           </button>
                         </div>
                      </form>
                   </div>
@@ -90,9 +205,17 @@
                <div class="row d-flex justify-content-start mx-1 mb-3 mt-3">
                   <div class="form-group row mx-0 my-0">
                      <!-- Add Sentence Modal Window Trigger Button -->
-                     <button type="button" id="addSentenceButton" class="btn btn-wine text-my-orange font-weight-semi-bold" data-toggle="modal"
-                        data-target="#addSentenceModalWindow">
+                     <button type="button" id="addSentenceButton" class="btn btn-wine text-my-orange font-weight-semi-bold"
+                        data-toggle="modal" data-target="#addSentenceModalWindow">
                         Agregar sentencia
+                     </button>
+                     <button type="button" id="registerUserButton" class="btn btn-wine text-my-orange font-weight-semi-bold ml-2"
+                        data-toggle="modal" data-target="#registerUserModalWindow">
+                        Registrar usuario
+                     </button>
+                     <button type="button" id="registerAutoridadButton" class="btn btn-wine text-my-orange font-weight-semi-bold ml-2"
+                        data-toggle="modal" data-target="#registerAuthorityModalWindow">
+                        Registrar autoridad
                      </button>
                      <div class="btn-group ml-2">
                         <button type="button" class="btn btn-wine text-my-orange font-weight-semi-bold dropdown-toggle" data-toggle="dropdown"
@@ -113,27 +236,13 @@
                </div>
             </div>
 
-            <table class="table">
-               <thead class="bg-wine text-my-orange text-center align-middle">
-                  <tr>
-                     <th scope="col">Número</th>
-                     <th scope="col">Expediente</th>
-                     <th scope="col">Sentido</th>
-                     <th scope="col">Autoridad emisora</th>
-                     <th scope="col">Fecha</th>
-                     <th scope="col">Documento</th>
-                     <th scope="col" class="actionsCell"></th>
-                  </tr>
-               </thead>
-               <tbody id="tableBody" name="tableBody"></tbody>
-            </table>
-            <div id="pagination" class="text-center mt-5"></div>
-
          </div>
       </div>
       <script src="../../bootstrap_4.3.1/js/jquery.js"></script>
       <script src="../../bootstrap_4.3.1/js/popper.js"></script>
       <script src="../../bootstrap_4.3.1/js/bootstrap.js"></script>
+      <script src="../../js/crudTable.js"></script>
+      <script src="../../js/crudAdministrador.js"></script>
       <!--
       <script src="js/crudAdministradorScript.js"></script>
       -->
